@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #3b82f6;
+  --secondary: #6366f1;
+  --accent: #8b5cf6;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 m-0 p-0 overflow-hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.toolbar-button {
+  @apply w-10 h-10 rounded-full bg-white hover:bg-gray-100 
+         transition-all duration-300 ease-in-out
+         flex items-center justify-center
+         text-sm font-medium border border-gray-200
+         text-gray-700 hover:text-gray-900
+         shadow-sm hover:shadow
+         relative;
+}
+
+.toolbar-button.active {
+  @apply bg-primary text-white border-transparent hover:bg-primary/90 hover:text-white;
+}
+
+.toolbar-button svg {
+  @apply w-5 h-5;
+}
+
+.toolbar-button-text {
+  @apply absolute -bottom-6 left-1/2 transform -translate-x-1/2
+         bg-gray-900 text-white px-2 py-1 rounded text-xs
+         opacity-0 group-hover:opacity-100 transition-opacity
+         whitespace-nowrap pointer-events-none;
+}
+
+.color-picker-wrapper {
+  @apply w-10 h-10 relative flex items-center justify-center;
+}
+
+.color-picker {
+  @apply absolute opacity-0 inset-0 w-full h-full cursor-pointer;
+}
+
+.color-picker-preview {
+  @apply w-10 h-10 rounded-full cursor-pointer 
+         transition-transform duration-200 ease-in-out
+         hover:scale-110 focus:outline-none 
+         focus:ring-2 focus:ring-primary focus:ring-offset-2
+         border-2 border-white shadow-sm
+         flex items-center justify-center;
+}
+
+.color-picker-preview svg {
+  @apply w-5 h-5;
+}
+
+.brush-size-wrapper {
+  @apply relative w-32 px-3 py-2;
+}
+
+.brush-size-slider {
+  @apply w-full h-2 rounded-lg appearance-none cursor-pointer
+         bg-gray-200 accent-primary;
+}
+
+.brush-size-slider::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 rounded-full bg-primary 
+         cursor-pointer transition-transform duration-200
+         hover:scale-110 active:scale-95;
+}
+
+.brush-size-slider::-moz-range-thumb {
+  @apply w-4 h-4 rounded-full bg-primary border-none
+         cursor-pointer transition-transform duration-200
+         hover:scale-110 active:scale-95;
+}
+
+/* Size Popup Styles */
+.size-popup {
+  @apply absolute bottom-full mb-2 left-1/2 -translate-x-1/2
+         bg-white rounded-lg shadow-lg border border-gray-200
+         p-4 flex flex-col items-center gap-3
+         min-w-[160px];
+  animation: fadeIn 0.2s ease-out;
+}
+
+.size-preview {
+  @apply bg-current rounded-full mx-auto;
+}
+
+.size-slider {
+  @apply w-full h-2 rounded-lg appearance-none cursor-pointer
+         bg-gray-200 accent-primary;
+}
+
+.size-slider::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 rounded-full bg-primary 
+         cursor-pointer transition-transform duration-200
+         hover:scale-110 active:scale-95;
+}
+
+.size-slider::-moz-range-thumb {
+  @apply w-4 h-4 rounded-full bg-primary border-none
+         cursor-pointer transition-transform duration-200
+         hover:scale-110 active:scale-95;
+}
+
+.size-value {
+  @apply text-sm font-medium text-gray-600;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Canvas Styles */
+canvas {
+  @apply touch-none cursor-crosshair;
+  image-rendering: pixelated;
+}
